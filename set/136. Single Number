@@ -1,0 +1,62 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+
+        Map<Integer,Integer> mp=new HashMap<Integer,Integer>();
+
+        for(int num:nums){
+            if(!mp.containsKey(num)){
+                mp.put(num,0);
+            }
+            mp.put(num,mp.get(num)+1);
+        }
+
+        for(int num:nums){
+            if(mp.get(num)==1)
+            return num;
+        }
+
+        return -1;
+        
+    }
+}
+
+
+------------------------------------------------------------------------------------------
+
+class Solution {
+    public int singleNumber(int[] nums) {
+
+        Set<Integer> st=new HashSet<Integer>();
+
+        int sum=0;
+        int setSum=0;
+
+        for(int num:nums){
+            if(!st.contains(num)){
+                st.add(num);
+                setSum += num;
+            }
+            sum+=num;
+        }
+
+        return 2*setSum-sum;
+        
+    }
+}
+
+
+------------------------------------------------------------------------------------------
+
+class Solution {
+    public int singleNumber(int[] nums) {
+
+        int res=0;
+
+        for(int num:nums){
+            res=res^num;
+        }
+
+        return res;
+        
+    }
+}
