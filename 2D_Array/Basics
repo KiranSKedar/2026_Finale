@@ -1,0 +1,138 @@
+1️⃣ Declare and Print a 2D Array
+public class Main {
+    public static void main(String[] args) {
+
+        int[][] arr = {
+            {1,2,3},
+            {4,5,6},
+            {7,8,9}
+        };
+
+        int rows = arr.length;
+        int cols = arr[0].length;
+
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+Output
+
+1 2 3
+4 5 6
+7 8 9
+2️⃣ Take Input for 2D Array
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int rows = 3;
+        int cols = 3;
+
+        int[][] arr = new int[rows][cols];
+
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                arr[i][j] = sc.nextInt();
+            }
+        }
+
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+3️⃣ Sum of All Elements
+int sum = 0;
+
+for(int i=0;i<arr.length;i++){
+    for(int j=0;j<arr[0].length;j++){
+        sum += arr[i][j];
+    }
+}
+
+System.out.println(sum);
+4️⃣ Row Wise Sum
+for(int i=0;i<arr.length;i++){
+
+    int sum = 0;
+
+    for(int j=0;j<arr[0].length;j++){
+        sum += arr[i][j];
+    }
+
+    System.out.println("Row " + i + " sum = " + sum);
+}
+5️⃣ Column Wise Sum
+for(int j=0;j<arr[0].length;j++){
+
+    int sum = 0;
+
+    for(int i=0;i<arr.length;i++){
+        sum += arr[i][j];
+    }
+
+    System.out.println("Column " + j + " sum = " + sum);
+}
+6️⃣ Find Maximum Element
+int max = Integer.MIN_VALUE;
+
+for(int i=0;i<arr.length;i++){
+    for(int j=0;j<arr[0].length;j++){
+
+        if(arr[i][j] > max){
+            max = arr[i][j];
+        }
+    }
+}
+
+System.out.println("Max = " + max);
+7️⃣ Print Primary Diagonal
+1 2 3
+4 5 6
+7 8 9
+
+Primary diagonal → 1 5 9
+
+for(int i=0;i<arr.length;i++){
+    System.out.print(arr[i][i] + " ");
+}
+8️⃣ Print Secondary Diagonal
+
+Secondary diagonal → 3 5 7
+
+int n = arr.length;
+
+for(int i=0;i<n;i++){
+    System.out.print(arr[i][n-i-1] + " ");
+}
+9️⃣ Transpose of Matrix
+int rows = arr.length;
+int cols = arr[0].length;
+
+int[][] transpose = new int[cols][rows];
+
+for(int i=0;i<rows;i++){
+    for(int j=0;j<cols;j++){
+        transpose[j][i] = arr[i][j];
+    }
+}
+
+💡 Interview tip:
+Always remember these 3 syntax points:
+
+int[][] arr = new int[rows][cols];
+
+arr.length        -> number of rows
+arr[0].length     -> number of columns
+arr[i][j]         -> element
