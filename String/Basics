@@ -1,0 +1,163 @@
+1️⃣ What is a String in Java?
+
+A String is a sequence of characters.
+
+String s = "hello";
+
+Each character has an index.
+
+h  e  l  l  o
+0  1  2  3  4
+2️⃣ Length of String
+String s = "hello";
+
+int len = s.length();
+
+System.out.println(len);
+
+Output
+
+5
+
+⚠️ Remember:
+
+Type	Method
+Array	arr.length
+String	str.length()
+ArrayList	list.size()
+3️⃣ Access Character
+String s = "hello";
+
+char ch = s.charAt(1);
+
+System.out.println(ch);
+
+Output
+
+e
+4️⃣ Traverse a String
+
+Very common in DSA.
+
+String s = "hello";
+
+for(int i = 0; i < s.length(); i++){
+    System.out.println(s.charAt(i));
+}
+
+Output
+
+h
+e
+l
+l
+o
+5️⃣ Convert String → Char Array
+
+Sometimes easier for modification.
+
+String s = "hello";
+
+char[] arr = s.toCharArray();
+
+for(char c : arr){
+    System.out.println(c);
+}
+6️⃣ Convert Char → String
+char ch = 'a';
+
+String s = Character.toString(ch);
+
+or
+
+String s = "" + ch;
+7️⃣ Compare Strings (VERY IMPORTANT ⚠️)
+
+❌ Wrong
+
+if(s1 == s2)
+
+✔ Correct
+
+if(s1.equals(s2))
+
+Example:
+
+String s1 = "hello";
+String s2 = "hello";
+
+if(s1.equals(s2)){
+    System.out.println("Equal");
+}
+8️⃣ Reverse a String
+
+Basic interview question.
+
+String s = "hello";
+
+for(int i = s.length()-1; i >= 0; i--){
+    System.out.print(s.charAt(i));
+}
+
+Output
+
+olleh
+9️⃣ Check Palindrome
+String s = "madam";
+
+int start = 0;
+int end = s.length()-1;
+
+boolean isPalindrome = true;
+
+while(start < end){
+    
+    if(s.charAt(start) != s.charAt(end)){
+        isPalindrome = false;
+        break;
+    }
+    
+    start++;
+    end--;
+}
+
+System.out.println(isPalindrome);
+🔟 Count Character Frequency (VERY COMMON)
+String s = "banana";
+
+int[] freq = new int[26];
+
+for(int i = 0; i < s.length(); i++){
+    
+    char ch = s.charAt(i);
+    
+    freq[ch - 'a']++;
+}
+
+for(int i = 0; i < 26; i++){
+    
+    if(freq[i] > 0){
+        System.out.println((char)(i+'a') + " -> " + freq[i]);
+    }
+}
+
+Output
+
+b -> 1
+a -> 3
+n -> 2
+⭐ Most Important String Methods (Remember These)
+Method	Use
+length()	size
+charAt(i)	get character
+substring()	get part of string
+equals()	compare strings
+toCharArray()	convert to array
+indexOf()	find character
+⭐ Interview Tip
+
+Most string problems use only these 3 things:
+
+1️⃣ Traversal
+2️⃣ Frequency array
+3️⃣ Two pointers
