@@ -161,3 +161,69 @@ Most string problems use only these 3 things:
 1️⃣ Traversal
 2️⃣ Frequency array
 3️⃣ Two pointers
+
+
+4️⃣ Check Anagram
+
+Two strings are anagram if they contain same characters with same frequency.
+
+Example
+
+listen
+silent
+Code
+String s1 = "listen";
+String s2 = "silent";
+
+int[] freq = new int[26];
+
+for(int i = 0; i < s1.length(); i++){
+    freq[s1.charAt(i) - 'a']++;
+}
+
+for(int i = 0; i < s2.length(); i++){
+    freq[s2.charAt(i) - 'a']--;
+}
+
+boolean isAnagram = true;
+
+for(int i = 0; i < 26; i++){
+    if(freq[i] != 0){
+        isAnagram = false;
+        break;
+    }
+}
+
+System.out.println(isAnagram);
+Concept
+
+Use frequency array
+
+Time complexity
+
+O(n)
+5️⃣ First Non-Repeating Character
+
+Example
+
+leetcode
+
+Output
+
+l
+Code
+String s = "leetcode";
+
+int[] freq = new int[26];
+
+for(int i = 0; i < s.length(); i++){
+    freq[s.charAt(i) - 'a']++;
+}
+
+for(int i = 0; i < s.length(); i++){
+
+    if(freq[s.charAt(i) - 'a'] == 1){
+        System.out.println(s.charAt(i));
+        break;
+    }
+}
