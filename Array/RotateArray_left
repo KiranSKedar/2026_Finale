@@ -1,0 +1,56 @@
+package com.eazybytes.backend.Array;
+
+import java.util.Arrays;
+
+public class Left_Rotate {
+
+    public static void main(String[] args) {
+        int[] nums = {1,2,3,4,5,6,7};
+        int k = 3;
+        int n=nums.length;
+
+//        leftrotate(nums,k);
+
+        reverserArray(nums,0,k-1);
+        reverserArray(nums,k,n-1);
+
+        reverserArray(nums,0,n-1);
+
+        System.out.println(Arrays.toString(nums));
+
+
+
+    }
+
+    public static void reverserArray(int[] arr,int start, int end){
+        while(start<end){
+            int temp=arr[start];
+            arr[start]=arr[end];
+            arr[end]=temp;
+            start++;
+            end--;
+        }
+    }
+
+    public static void leftrotate(int[] nums, int k){
+        int n=nums.length;
+        k=k%n;
+        int temp[] = new int[k];
+
+        for(int i=0;i<k;i++){
+            temp[i]=nums[i];
+
+        }
+
+        System.out.println(Arrays.toString(temp));
+
+        for(int i=k;i<n;i++){
+            nums[i-k]=nums[i];
+        }
+        System.out.println(Arrays.toString(nums));
+        for (int i = 0; i < k; i++) {
+            nums[n - k + i] = temp[i];
+        }
+        System.out.println(Arrays.toString(nums));
+    }
+}
