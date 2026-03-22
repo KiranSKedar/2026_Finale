@@ -1,0 +1,54 @@
+package com.eazybytes.backend.Array;
+
+import ch.qos.logback.core.net.SyslogOutputStream;
+
+import java.util.Arrays;
+
+public class Right_Rotate {
+
+    public static void main(String[] args) {
+       int[] nums = {1,2,3,4,5,6,7};
+       int k = 3;
+       int n=nums.length;
+
+       reverserArray(nums,0,n-1);
+       reverserArray(nums,0,k-1);
+       reverserArray(nums,k,n-1);
+
+       System.out.println(Arrays.toString(nums));
+
+//       rightrotate(nums,k);
+    }
+
+    public static void reverserArray(int[] arr,int start, int end){
+        while(start<end){
+            int temp=arr[start];
+            arr[start]=arr[end];
+            arr[end]=temp;
+            start++;
+            end--;
+        }
+    }
+    public static void rightrotate(int[] nums, int k){
+        int n=nums.length;
+        k=k%n;
+        int temp[] = new int[k];
+        int idx=0;
+        for(int i=n-k;i<n;i++){
+            temp[idx]=nums[i];
+            idx++;
+        }
+
+        System.out.println(Arrays.toString(temp));
+        //3,99
+        for(int i = n - k - 1; i >= 0; i--){
+            nums[i + k] = nums[i];
+        }
+        System.out.println(Arrays.toString(nums));
+        //_,_,-1,100
+        for(int i=0;i<k;i++){
+            nums[i]=temp[i];
+        }
+        System.out.println(Arrays.toString(nums));
+    }
+}
