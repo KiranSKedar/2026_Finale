@@ -1,0 +1,69 @@
+package com.eazybytes.backend.Array;
+
+import java.util.Arrays;
+
+public class FindMissingNumber {
+
+
+    public static void main(String[] args) {
+        int[] arr={1,2,3,4,6,7,8};
+        int n=arr.length+1;
+
+        int[] hashArray=new int[n+1];
+
+        for(int i=0;i<n-1;i++){
+            hashArray[arr[i]]++;
+
+        }
+        System.out.println(Arrays.toString(hashArray));
+
+        for(int i=1;i<=n;i++){
+            if(hashArray[i]==0){
+                System.out.println(i);
+            }
+        }
+
+
+    }
+}
+
+
+
+
+package com.eazybytes.backend.Array;
+
+import java.util.Arrays;
+
+public class FindMissingNumber {
+
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 6, 7, 8};
+        int n = arr.length + 1;
+
+        int[] hashArray = new int[n + 1];
+
+        int sum=0;
+        for (int i = 0; i < n - 1; i++) {
+            hashArray[arr[i]]++;
+            sum+=arr[i];
+
+
+        }
+
+//        System.out.println(sum);
+        int req=n*(n+1);
+//        System.out.println(req);
+
+        System.out.println(req/2-sum);
+//        System.out.println(Arrays.toString(hashArray));
+
+        for (int i = 1; i <= n; i++) {
+            if (hashArray[i] == 0) {
+//                System.out.println(i);
+            }
+        }
+
+
+    }
+}
