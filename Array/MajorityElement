@@ -1,0 +1,63 @@
+https://leetcode.com/problems/majority-element/description/
+
+package com.eazybytes.backend.Array.Array.Medium;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MajorityElement {
+
+    public static void main(String[] args) {
+        int[] arr = {7, 0, 0, 1, 7, 7, 2, 7, 7};
+        int n= arr.length;
+
+//        for(int i=0;i<n;i++){
+//
+//            int cnt =0;
+//            for(int j=0;j<n;j++){
+//                if(arr[j]==arr[i])
+//                    cnt++;
+//            }
+//
+//            if(cnt>n/2){
+//                System.out.println(arr[i]);
+//                return;
+//            }
+//        }
+
+        HashMap<Integer,Integer> mp=new HashMap<>();
+
+        for(int i=0;i<n;i++){
+            mp.put(arr[i],mp.getOrDefault(arr[i],0)+1);
+        }
+
+        for(Map.Entry<Integer,Integer> entry:mp.entrySet()){
+            if(entry.getValue()>n/2){
+                System.out.println(entry.getKey());
+            }
+        }
+
+        //Moores Vooting Algo
+    int cnt=0,ele=0;
+        for(int i=0;i<n;i++){
+            if(cnt==0){
+                ele=arr[i];
+                cnt++;
+            }
+
+            else if(arr[i]==ele){
+                cnt++;
+            }else{
+                cnt--;
+            }
+        }
+
+        cnt=0;
+        for(int i=0;i<n;i++){
+            if(arr[i]==ele) cnt++;
+        }
+
+        if(cnt>n/2) System.out.println(ele);
+        //
+    }
+}
