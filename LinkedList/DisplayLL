@@ -1,0 +1,19 @@
+public static void display(Node head){
+        while(head!=null){
+            System.out.println(head.data);
+            head=head.next;
+        }
+    }
+
+public static void dispalyRec(Node head){
+        if(head==null) return;
+        System.out.print(head.data+" ");
+        dispalyRec(head.next);
+    }
+
+    public static void dispalyRecRev(Node head){
+        if(head==null) return;
+
+        dispalyRec(head.next);
+        System.out.print(head.data+" ");
+    }
