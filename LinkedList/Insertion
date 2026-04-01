@@ -1,0 +1,111 @@
+package com.eazybytes.backend.LinkedList;
+
+public class LLImpl {
+
+
+    public static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+
+        }
+    }
+
+    public static class linkedlist{
+        Node head=null;
+        Node tail=null;
+
+        void insertAtEnd(int data){
+            Node temp=new Node(data);
+            if(head==null){
+                head=temp;
+
+            }else{
+                tail.next=temp;
+
+            }
+            tail=temp;
+        }
+
+
+        void insertAtHead(int val){
+            Node temp=new Node(val);
+            if(head==null){
+                head=temp;
+                tail=temp;
+            }else{
+                temp.next=head;
+                head=temp;
+            }
+        }
+
+         int size(){
+            int l=0;
+            Node t=head;
+            while(t!=null){
+                l++;
+                t=t.next;
+            }
+
+            return l;
+        }
+
+        int getAt(int idx){
+            Node temp=head;
+            for(int i=1;i<=idx;i++){
+                temp=temp.next;
+            }
+
+            return temp.data;
+        }
+
+        void insertAtPos(int idx,int val){
+            Node t=new Node(val);
+            Node temp=head;
+            if(idx==size()){
+                insertAtEnd(val);
+                return;
+            }
+                if(idx==0){
+                    insertAtHead(val);
+                    return;
+                }
+            for(int i=1;i<idx;i++){
+                temp=temp.next;
+            }
+            t.next=temp.next;
+            temp.next=t;
+
+        }
+        void  display(){
+            while(head!=null){
+                System.out.print(head.data+" ");
+                head=head.next;
+            }
+            System.out.println();
+        }
+
+    }
+
+
+
+    public static void main(String[] args) {
+    linkedlist ll=new linkedlist();
+    ll.insertAtEnd(3);
+    ll.insertAtEnd(4);
+    ll.insertAtEnd(5);
+
+    ll.insertAtHead(2);
+    ll.insertAtHead(1);
+
+    ll.insertAtPos(2,100);
+
+
+
+System.out.println(ll.getAt(4));
+
+        ll.display();
+    }
+}
