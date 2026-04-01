@@ -1,0 +1,8 @@
+public static int findLength(Node a){
+        int cnt=0;
+        while(a!=null){
+            cnt++;
+            a=a.next;
+        }
+        return cnt;
+    }
