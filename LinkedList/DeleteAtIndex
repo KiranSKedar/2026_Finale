@@ -1,0 +1,13 @@
+ void deleteATIndex(int idx){
+            Node temp1=head;
+            if(idx==0){
+                head=head.next;
+                return;
+            }
+            for(int i=1;i<idx;i++){
+                temp1=temp1.next;
+            }
+            temp1.next=temp1.next.next;
+            tail=temp1;
+
+        }
