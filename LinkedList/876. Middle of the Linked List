@@ -25,3 +25,8 @@ class Solution {
         
     }
 }
+
+//for even no of nodes there r 2 middle, above code will gve right middle
+for left middle condition is fast.next.next!=null
+
+for odd same - fast!=null
