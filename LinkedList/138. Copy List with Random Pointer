@@ -48,3 +48,65 @@ class Solution {
         
     }
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+
+class Solution {
+    public Node copyRandomList(Node head) {
+
+if(head==null) return head;
+        Node curr=head;
+
+        while(curr!=null){
+            Node temp=new Node(curr.val);
+            Node nexT=curr.next;
+            curr.next=temp;
+            curr.next.next=nexT;
+            curr=nexT;
+
+        }
+        curr=head;
+
+        while(curr!=null && curr.next!=null){
+            if(curr.random==null)
+            curr.next.random=null;
+            else{
+                Node temp=curr.next;
+            temp.random=curr.random.next;
+            }
+            
+            curr=curr.next.next;
+
+        }
+
+        curr=head;
+        Node i=head.next;
+        Node newCurr=i;
+        while(curr!=null & newCurr!=null){
+            curr.next=(curr.next!=null)?curr.next.next:null;
+            newCurr.next=(newCurr.next!=null)?newCurr.next.next:null;
+            curr=curr.next;
+            newCurr=newCurr.next;
+        }
+
+        return i;
+        
+    }
+}
