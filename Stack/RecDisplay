@@ -1,0 +1,42 @@
+package com.eazybytes.backend.Stack;
+
+import java.util.Stack;
+
+public class DisplayRec {
+
+    public static void DispalyRecCall(Stack<Integer> st){
+       if(st.size()==0) return;
+        int top=st.pop();
+//        System.out.print(top+" ");
+        DispalyRecCall(st);
+        System.out.print(top+" ");
+        st.push(top);
+    }
+
+    public static void pushAtBottom(int data,Stack<Integer> st){
+        if(st.size()==0){
+            st.push(data);
+            return;
+        }
+       int x= st.pop();
+        pushAtBottom(data,st);
+        st.push(x);
+
+    }
+
+    public static void main(String[] args) {
+        Stack<Integer> st=new Stack<>();
+        st.push(1);
+        st.push(2);
+        st.push(3);
+        st.push(4);
+        st.push(5);
+
+//        DispalyRecCall(st);
+        System.out.print("Before Inserting Element:"+st);
+        System.out.println();
+        pushAtBottom(100,st);
+        System.out.print("After Inserting Element:"+st);
+
+    }
+}
