@@ -1,0 +1,53 @@
+https://www.geeksforgeeks.org/problems/find-pairs-with-given-sum-in-doubly-linked-list/1
+
+/*
+
+Definition for singly Link List Node
+class Node
+{
+    int data;
+    Node next,prev;
+
+    Node(int x){
+        data = x;
+        next = null;
+        prev = null;
+    }
+}
+
+You can also use the following for printing the link list.
+Node.printList(Node node);
+*/
+
+class Solution {
+    public static ArrayList<ArrayList<Integer>> findPairsWithGivenSum(int target,
+                                                                      Node head) {
+        // code here
+        ArrayList<ArrayList<Integer>> ans=new ArrayList<>();
+        
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        
+        Node low=head;
+        Node high=temp;
+        
+            while(low.data<high.data){
+            if(low.data+high.data==target){
+                ArrayList<Integer> arr=new ArrayList<>();
+                arr.add(low.data);
+                arr.add(high.data);
+                ans.add(arr);
+                low=low.next;
+                high=high.prev;
+            }else if(low.data+high.data<target){
+                low=low.next;
+            }else{
+                high=high.prev;
+            }
+        }
+        
+        return ans;
+    }
+}
