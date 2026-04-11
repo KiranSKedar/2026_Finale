@@ -37,6 +37,60 @@ public class DoublyLL {
             temp=temp.next;
         }
     }
+
+    public static Node insertAtHead(Node head,int data){
+        Node newNode=new Node(data);
+        head.prev=newNode;
+        newNode.next=head;
+        head=newNode;
+
+        return head;
+    }
+
+    public static void insertAtTail(Node head, int data){
+        Node temp=head;
+
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        Node newNode=new Node(data);
+        newNode.prev=temp;
+        temp.next=newNode;
+    }
+
+    public static void insertAtIndx(Node head, int indx,int data){
+        Node temp=head;
+        for(int i=1;i<indx;i++){
+            temp=temp.next;
+        }
+        Node newNode=new Node(data);
+        temp.next.prev=newNode;
+        newNode.prev=temp;
+        newNode.next=temp.next;
+        temp.next=newNode;
+    }
+    public static void deleteAtHead(Node head){
+        head=head.next;
+        head.prev=null;
+    }
+    public static void deleteAtTail(Node head){
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        temp=temp.prev;
+        temp.next=null;
+    }
+
+    public static void deleteAtIndex(Node head, int index){
+
+        Node temp=head;
+        for(int i=1;i<index;i++){
+            temp=temp.next;
+        }
+        temp.next.next.prev=temp;
+        temp.next=temp.next.next;
+    }
     public static void main(String[] args) {
 
         Node a=new Node(1);
@@ -58,7 +112,16 @@ public class DoublyLL {
 //        System.out.println();
 //        displayrev(e);
 //        System.out.println();
-        display2(b);
+//        display2(b);
+//        insertAtHead(a,100);
+//        display2(e);
+//        insertAtTail(a,200);
+        display(a);
+        System.out.println();
+//        insertAtIndx(a,2,300);
+        deleteAtIndex(a,3);
+        display(a);
+
 
     }
 }
