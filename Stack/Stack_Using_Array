@@ -1,0 +1,54 @@
+package com.eazybytes.backend.Stack;
+
+
+ class Stack{
+    private int[] arr=new int[4];
+    private int idx=0;
+    void push(int x){
+        arr[idx]=x;
+        idx++;
+    }
+    int peek(){
+        if(idx==0){
+            System.out.println("Stack is empty");
+            return -1;
+        }
+        return arr[idx-1];
+    }
+
+    int pop(){
+        if(idx==0){
+            System.out.println("Stack is Empty!");
+            return -1;
+        }
+        int top=arr[idx-1];
+        idx--;
+        return top;
+    }
+    void display(){
+        for(int i=0;i<=idx-1;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+    int size(){
+        return idx;
+    }
+}
+public class StackUsingArray {
+
+    public static void main(String[] args) {
+        Stack s=new Stack();
+        s.push(4);
+        s.push(3);
+        s.push(2);
+        s.push(1);
+        System.out.println("Peek Element: "+s.peek());
+        System.out.println("Stack Elements");
+       s.display();
+
+            System.out.println("Stack Size: "+s.size());
+            System.out.println("Popped element: "+s.pop());
+        System.out.println("Stack Elements after poppping");
+        s.display();
+    }
+}
