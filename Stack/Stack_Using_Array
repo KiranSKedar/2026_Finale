@@ -5,6 +5,10 @@ package com.eazybytes.backend.Stack;
     private int[] arr=new int[4];
     private int idx=0;
     void push(int x){
+        if(isFull()){
+            System.out.println("Stack if full:OVERFLOW");
+            return;
+        }
         arr[idx]=x;
         idx++;
     }
@@ -32,6 +36,15 @@ package com.eazybytes.backend.Stack;
     }
     int size(){
         return idx;
+    }
+    boolean isEmpty(){
+        if(size()==0) return true;
+        else return false;
+    }
+
+    boolean isFull(){
+        if(idx==arr.length) return true;
+        else return false;
     }
 }
 public class StackUsingArray {
