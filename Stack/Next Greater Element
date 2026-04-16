@@ -31,3 +31,31 @@ class Solution {
         
     }
 }
+
+
+********************************************************************************************************************************
+
+
+/ Next Greater Element -  Method 2 
+// approach -2 filling the element of array from front 
+    static int[] nextGreaterElementUsingStacks2(int[] arr){
+
+        int n = arr.length;
+        int[] ans = new int[n];
+        Stack<Integer> st = new Stack<>();
+
+        for(int i=0; i<n; i++){
+            // default value 
+            ans[i] = -1;
+            
+            if(st.isEmpty()) st.push(i);
+            else{
+                while(!st.isEmpty() && arr[i]>arr[st.peek()])ans[st.pop()] = arr[i];
+                            
+            }
+
+            // push index everytime 
+            st.push(i);
+        }
+        return ans;
+    }
