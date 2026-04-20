@@ -1,0 +1,26 @@
+package com.eazybytes.backend.Stack;
+
+import java.util.Stack;
+
+public class PrefixToInfix {
+    public static void main(String[] args) {
+        String str =  "-9/*+5346";
+
+        java.util.Stack<String> infix=new Stack<>();
+        for(int i=str.length()-1;i>=0;i--){
+            char ch=str.charAt(i);
+            int ascii=(int) ch;
+            if(ascii>=48 && ascii<=57){
+                infix.push(ch+"");
+            }
+            else{
+                String v2=infix.pop();
+                String v1=infix.pop();
+                infix.push("("+v2+ch+v1+")");
+            }
+        }
+
+        System.out.println(infix);
+
+    }
+}
