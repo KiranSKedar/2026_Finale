@@ -1,0 +1,26 @@
+package com.eazybytes.backend.Stack;
+
+import java.util.Stack;
+
+public class PostFixToPrefix {
+    public static void main(String[] args) {
+        String str = "953+4*6/-";
+
+        java.util.Stack<String> prefix=new Stack<>();
+
+        for(int i=0;i<str.length();i++){
+            char ch=str.charAt(i);
+            int ascii=(int) ch;
+            if(ascii>=48 && ascii<=57){
+                prefix.push(ch+"");
+            }
+            else{
+                String v1=prefix.pop();
+                String v2=prefix.pop();
+                prefix.push(ch+v2+v1);
+            }
+        }
+
+        System.out.println("Prefix Conversion of Postfix Expression is:->"+prefix.peek());
+    }
+}
