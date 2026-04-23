@@ -1,11 +1,11 @@
 package com.eazybytes.backend.Stack;
-
+//wrong class name its nearest smaller to left
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Stack;
 
-public class NearestSmallerToLeft {
+public class NearestSmallestToRight {
 
     public static void main(String[] args) {
         int[] arr={1,0,4,3,2,8,7,6,4};
@@ -13,7 +13,7 @@ public class NearestSmallerToLeft {
         java.util.Stack<Integer> st=new Stack<>();
         ArrayList<Integer> li=new ArrayList<>();
 
-        for(int i=n-1;i>=0;i--){
+        for(int i=0;i<n;i++){
             if(st.isEmpty()){
                 li.add(-1);
             }
@@ -33,8 +33,7 @@ public class NearestSmallerToLeft {
             st.push(arr[i]);
         }
         System.out.println("Original Array:->"+ Arrays.toString(arr));
-        Collections.reverse(li);
+        
         System.out.println(li);
-
     }
 }
