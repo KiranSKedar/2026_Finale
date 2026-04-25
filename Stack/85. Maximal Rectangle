@@ -1,0 +1,108 @@
+https://leetcode.com/problems/maximal-rectangle/description/
+
+class Solution {
+
+    int findMaxi(int[] arr){
+          Stack<Integer> st=new Stack<>();
+          int n=arr.length;
+
+        ArrayList<Integer> nsl=new ArrayList<>();
+        ArrayList<Integer> nsr=new ArrayList<>();
+
+        for(int i=0;i<n;i++){
+            if(st.isEmpty()){
+                nsl.add(-1);
+            }
+            else if(!st.isEmpty() && arr[st.peek()]<arr[i]){
+                nsl.add(st.peek());
+
+            }else if(!st.isEmpty() && arr[st.peek()]>=arr[i]){
+                while(!st.isEmpty() && arr[st.peek()]>=arr[i]){
+                    st.pop();
+
+                }
+                if(st.isEmpty()){
+                    nsl.add(-1);
+                }else{
+                    nsl.add(st.peek());
+                }
+            }
+            st.push(i);
+        }
+
+        // System.out.println("Original Array:- "+Arrays.toString(arr));
+        // System.out.println("Nearest Smaller to left:- "+nsl);
+
+        while(!st.isEmpty()){
+            st.pop();
+        }
+        for(int i=n-1;i>=0;i--){
+            if(st.isEmpty()){
+                nsr.add(n);
+            }
+            else if(!st.isEmpty() && arr[st.peek()]<arr[i]){
+                nsr.add(st.peek());
+
+            }else if(!st.isEmpty() && arr[st.peek()]>=arr[i]){
+                while(!st.isEmpty() && arr[st.peek()]>=arr[i]){
+                    st.pop();
+
+                }
+                if(st.isEmpty()){
+                    nsr.add(n);
+                }else{
+                    nsr.add(st.peek());
+                }
+            }
+            st.push(i);
+
+        }
+
+        Collections.reverse(nsr);
+
+        // System.out.println("Nearest Smaller to right:- "+nsr);
+
+        int maxArea=Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            int width= nsr.get(i)-nsl.get(i)-1;
+            int area=width*arr[i];
+            maxArea=Math.max(maxArea,area);
+        }
+        return maxArea;
+    }
+    public int maximalRectangle(char[][] matrix) {
+
+        if(matrix==null||matrix.length==0||matrix[0].length==0)
+        return 0;
+
+        int rows=matrix.length;
+        int cols=matrix[0].length;
+        int arr[]=new int[cols];
+
+        for(int j=0;j<cols;j++){
+            if(matrix[0][j]=='1')
+            arr[j]=1;
+            else
+            arr[j]=0;
+        }
+
+        int ans=Integer.MIN_VALUE;
+        ans=Math.max(ans,findMaxi(arr));
+
+        for(int i=1;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                if(matrix[i][j]=='0'){
+                    arr[j]=0;
+                }
+                else{
+                    arr[j]+=1;
+                }
+
+            }
+            ans=Math.max(ans,findMaxi(arr));
+        }
+        return ans;
+
+        
+    }
+}
