@@ -1,0 +1,110 @@
+// Java program for insertion and deletion 
+// in Circular Queue
+
+class Node {
+    int data;
+    Node next;
+    
+    Node(int newdata) {
+        data = newdata;
+        next = null;
+    }
+}
+
+class Queue {
+    Node front, rear;
+    
+    Queue() {
+        front = rear = null;
+    }
+}
+
+
+class GfG {
+    
+    // Function to insert element in a Circular queue
+    static void enQueue(Queue q, int value) {
+        Node newNode = new Node(value);
+
+        if (q.front == null)
+            q.front = newNode;
+        else
+            q.rear.next = newNode;
+
+        q.rear = newNode;
+        q.rear.next = q.front;
+    }
+
+    // Function to delete element from Circular Queue
+    static int deQueue(Queue q) {
+        if (q.front == null)
+            return -1;
+
+        int value;
+
+        if (q.front == q.rear) {
+            value = q.front.data;
+            q.front = q.rear = null;
+        } else {
+            Node temp = q.front;
+            value = temp.data;
+            q.front = q.front.next;
+            q.rear.next = q.front;
+        }
+
+        return value;
+    }
+    
+    // Function to return the front value
+    static int front(Queue q) {
+    	Node front = q.front;
+    
+    	if (front == null) {
+    		return -1;
+    	}
+    	
+    	return front.data;
+    }
+    
+    // Function to return the rear value
+    static int rear(Queue q) {
+    	Node rear = q.rear;
+    
+    	if (rear == null) {
+    		return -1;
+    	}
+    
+    	return rear.data;
+    }
+
+    static void printQueue(Queue q) {
+        Node curr = q.front;
+        
+        if (curr == null) return;
+
+        do {
+            System.out.print(curr.data + " ");
+            curr = curr.next;
+        } while (curr != q.front);
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Queue q = new Queue();
+
+        enQueue(q, 14);
+        enQueue(q, 22);
+        enQueue(q, 6);
+        enQueue(q, 20);
+        
+        System.out.println("Front value = " + front(q));
+        System.out.println("Rear value = " + rear(q));
+
+        printQueue(q);
+
+        System.out.println("Deleted value = " + deQueue(q));
+        System.out.println("Deleted value = " + deQueue(q));
+
+        printQueue(q);
+    }
+}
