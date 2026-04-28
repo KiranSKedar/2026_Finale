@@ -143,3 +143,81 @@ class Solution {
         return true;
     }
 }
+
+
+
+🔴 Core Difference
+✅ First Solution
+while(fast!=null && fast.next!=null){
+    slow=slow.next;
+    fast=fast.next.next;
+}
+
+ListNode midd = reverseList(slow);
+
+👉 Here:
+
+slow ends at middle (for odd) OR second middle (for even)
+You reverse from slow itself
+✅ Second Solution
+while(fast.next!=null && fast.next.next!=null){
+    slow=slow.next;
+    fast=fast.next.next;
+}
+
+ListNode midd = reverseList(slow.next);
+
+👉 Here:
+
+slow stops one node before middle
+You reverse from slow.next
+So you skip the exact middle node (important for odd length)
+🧠 Let’s Understand with Example
+Example 1 (Odd length)
+1 → 2 → 3 → 2 → 1
+🔹 First Approach
+slow → points to 3
+Reverse from 3 → becomes:
+1 → 2 → 3 ← 2 ← 1
+
+Now comparing:
+
+p1: 1 → 2 → 3
+p2: 1 → 2 → 3
+
+👉 Middle element 3 is compared with itself
+✔ Works, but extra comparison
+
+🔹 Second Approach
+slow → points to 2 (before middle)
+Reverse from slow.next (i.e., 3)
+
+Reversed:
+
+1 → 2 → 3 ← 2 ← 1
+
+Now comparing:
+
+p1: 1 → 2
+p2: 1 → 2
+
+👉 Middle 3 is skipped
+✔ Cleaner & optimal
+
+⚖️ Even Length Case
+1 → 2 → 2 → 1
+First Approach:
+slow → second 2
+reverse from there → OK
+Second Approach:
+slow → first 2
+reverse from slow.next → also OK
+
+👉 Both work fine for even length
+
+🔥 Key Difference Summary
+Aspect	First Code	Second Code
+Middle handling	Includes middle	Skips middle
+Reverse start	slow	slow.next
+Comparisons	Extra comparison (odd case)	Minimal comparisons
+Cleanliness	Slightly less clean	More standard ✅
