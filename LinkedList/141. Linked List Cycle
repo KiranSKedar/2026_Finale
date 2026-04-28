@@ -25,3 +25,10 @@ public class Solution {
         
     }
 }
+
+Intuition
+slow moves 1 step
+fast moves 2 steps
+
+So before moving fast:
+👉 you must ensure 2 steps are possible
