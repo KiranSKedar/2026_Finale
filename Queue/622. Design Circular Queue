@@ -64,3 +64,48 @@ class MyCircularQueue {
  * boolean param_5 = obj.isEmpty();
  * boolean param_6 = obj.isFull();
  */
+
+
+
+
+*****************************************************************************************
+Using two pointer
+
+
+public class MyCircularQueue
+{
+    int[] q;
+    int front = 0;
+    int rear = -1;
+    int count = 0;
+    
+    public MyCircularQueue(int k)
+    {
+        q = new int[k];
+    }
+    
+    public bool EnQueue(int value)
+    {
+        if (IsFull()) return false;
+        count++;
+        rear = (rear + 1) % q.Length;
+        q[rear] = value;
+        return true;
+    }
+    
+    public bool DeQueue()
+    {
+        if (IsEmpty()) return false;
+        count--;
+        front = (front + 1) % q.Length;
+        return true;
+    }
+    
+    public int Front() => IsEmpty() ? -1 : q[front];
+    
+    public int Rear() => IsEmpty() ? -1 : q[rear];
+    
+    public bool IsEmpty() => count == 0;
+    
+    public bool IsFull() => count == q.Length;
+}
