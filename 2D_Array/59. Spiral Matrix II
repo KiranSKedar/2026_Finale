@@ -1,0 +1,35 @@
+https://leetcode.com/problems/spiral-matrix-ii/description/
+
+class Solution {
+    public int[][] generateMatrix(int n) {
+
+        int digit=1;
+        int left=0,right=n-1;
+        int top=0,bottom=n-1;
+        int[][] spiral=new int[n][n];
+        while(digit<=n*n){
+            //let to right
+            for(int i=left;i<=right && digit<=n*n;i++){
+                spiral[top][i]=digit++;
+            }
+            top++;
+            //top to bottom last col
+            for(int i=top;i<=bottom && digit<=n*n;i++){
+                spiral[i][right]=digit++;
+            }
+            right--;
+            //right to left bottom row
+            for(int i=right;i>=left && digit<=n*n;i--){
+                spiral[bottom][i]=digit++;
+            }
+            bottom--;
+
+            //bottom to top first col
+            for(int i=bottom;i>=top && digit<=n*n;i--){
+                spiral[i][left]=digit++;
+            }
+            left++;
+        }
+        return spiral;
+    }
+}
