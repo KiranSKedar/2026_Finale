@@ -1,5 +1,51 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
+        int n=matrix.length;
+        int m=matrix[0].length;
+        int cnt=n*m;
+
+        int top=0,bottom=n-1;
+        int left=0,right=m-1;
+
+        List<Integer>ans=new ArrayList<Integer>();
+
+        while(cnt>0){
+
+            //first row-left to right
+            for(int i=left;i<=right && cnt>0;i++){
+                ans.add(matrix[top][i]);
+                cnt--;
+            }
+            top++;
+
+            //last col - top to bottom
+            for(int i=top;i<=bottom && cnt>0;i++){
+                ans.add(matrix[i][right]);
+                cnt--;
+            }
+            right--;
+
+            //last bottom row
+            for(int i=right;i>=left && cnt>0;i--){
+                ans.add(matrix[bottom][i]);
+                cnt--;
+            }
+            bottom--;
+            //first col-bottom-top
+            for(int i=bottom;i>=top && cnt>0;i--){
+                ans.add(matrix[i][left]);
+                cnt--;
+            }
+            left++;
+
+        }
+
+        return ans;
+    }
+}
+**********************************************************************************************************************************
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
 
         int n=matrix.length;
         int m=matrix[0].length;
