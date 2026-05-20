@@ -2,3 +2,13 @@ int arr2[]=arr.clone()--> to create deep copy of array
 Arrays.copyOf(arr,arr.length)
 Arrays.copyOfRange(arr,0,arr.length) ->last parm is exclusive
 Arrays.sort(arr)
+
+
+find unique in array - double for loop, make similar element as -1,
+for(i - o to n) 
+for(j i+1 to n) 
+
+again traverse-print ele which is not -1
+
+
+second max- find max , replace it with int min-again find max
