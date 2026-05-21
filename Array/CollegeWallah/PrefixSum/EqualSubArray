@@ -1,0 +1,30 @@
+https://www.geeksforgeeks.org/problems/split-an-array-into-two-equal-sum-subarrays/1
+
+class Solution {
+    public boolean canSplit(int arr[]) {
+        // code here
+        
+        int n=arr.length;
+        
+        int[] prefSum=new int[n];
+        prefSum[0]=arr[0];
+        
+        int sum=0;
+        for(int i=0;i<n;i++){
+            sum+=arr[i];
+        }
+        
+        int suff=sum-prefSum[0];
+            if(suff==prefSum[0]) return true;
+        
+        for(int i=1;i<n;i++){
+            prefSum[i]=prefSum[i-1]+arr[i];
+            
+            suff=sum-prefSum[i];
+            if(suff==prefSum[i]) return true;
+        }
+        
+        return false;
+        
+    }
+}
