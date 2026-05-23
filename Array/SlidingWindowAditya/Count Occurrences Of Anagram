@@ -1,0 +1,62 @@
+https://www.geeksforgeeks.org/problems/count-occurences-of-anagrams5839/1
+
+// User function Template for Java
+
+class Solution {
+
+    int search(String pat, String txt) {
+        // code here
+        
+        Map<Character,Integer>mp=new HashMap<>();
+        
+        for(int i=0;i<pat.length();i++){
+            char ch=pat.charAt(i);
+            if(mp.containsKey(ch)){
+                mp.put(ch,mp.get(ch)+1);
+            }else{
+                mp.put(ch,1);
+            }
+        }
+        
+        
+        int i=0,j=0,cnt=mp.size(),ans=0;
+        int n=txt.length();
+        int k=pat.length();
+        
+        while(j<n){
+            
+            char c=txt.charAt(j);
+            if(mp.containsKey(c)){
+                mp.put(c,mp.get(c)-1);
+                
+                if(mp.get(c)==0){
+                    cnt--;
+                }
+            }
+            
+            if(j-i+1==k){
+                if(cnt==0){
+                    ans++;
+                }
+                
+                char ch=txt.charAt(i);
+                if(mp.containsKey(ch)){
+                    mp.put(ch,mp.get(ch)+1);
+                    if(mp.get(ch)==1){
+                    cnt++;
+                }
+                }
+                
+                i++;
+                j++;
+            }
+            
+            else if(j-i+1<k){
+                j++;
+            }
+        }
+        
+        return ans;
+        
+    }
+}
