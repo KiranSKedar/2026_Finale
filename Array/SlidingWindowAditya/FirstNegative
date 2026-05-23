@@ -1,0 +1,46 @@
+package com.eazybytes.backend.SlidingWindow;
+
+import java.util.*;
+
+public class FirstNegative {
+
+    public static void main(String[] args) {
+        int[] arr={12,-1,-7,8,-15,30,13,28};
+
+        int n= arr.length;
+
+
+        int k=3;
+
+        Queue<Integer> q=new LinkedList<>();
+
+        List<Integer> li=new ArrayList<>();
+
+        int i=0,j=0;
+
+        while(j<n){
+            if(arr[j]<0){
+                q.add(arr[j]);
+            }
+
+            if(j-i+1<k){
+                j++;
+            } else if (j-i+1==k) {
+                if(!q.isEmpty()){
+                    li.add(q.peek());
+                }else{
+                    li.add(0);
+                }
+
+                if(!q.isEmpty() && q.peek()==arr[i]){
+                    q.poll();
+                }
+
+                i++;
+                j++;
+            }
+        }
+        System.out.println("Original Array:-"+Arrays.toString(arr));
+        System.out.println("First Negatve:-"+li);
+    }
+}
