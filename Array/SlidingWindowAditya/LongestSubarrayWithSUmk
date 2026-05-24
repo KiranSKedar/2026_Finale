@@ -1,0 +1,36 @@
+
+//works only for positives
+package com.eazybytes.backend.SlidingWindow;
+
+public class LongestSubarrayPositive {
+
+    public static void main(String[] args) {
+        int a[]={4,1,1,1,2,3,5};
+
+        int k=5;
+
+        int n=a.length;
+
+        int ans=0,sum=0;
+
+        int i=0,j=0;
+
+        while(j<n){
+            sum+=a[j];
+            while(sum>k){
+                sum-=a[i];
+                i++;
+            }
+
+            if(sum==k){
+                ans=Math.max(ans,j-i+1);
+                sum-=a[i];
+                i++;
+                j++;
+            }else if(sum<k){
+                j++;
+            }
+        }
+        System.out.println("Longest Subarray with sum "+k+" is: "+ans);
+    }
+}
