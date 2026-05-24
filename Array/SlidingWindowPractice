@@ -1,0 +1,51 @@
+2461. Maximum Sum of Distinct Subarrays With Length K
+https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/
+
+class Solution {
+    public long maximumSubarraySum(int[] nums, int k) {
+
+        int n=nums.length;
+
+        Map<Integer,Integer>mp=new HashMap<>();
+
+        long ans=0;
+
+
+        long sum=0;
+
+        int i=0,j=0;
+
+        while(j<n){
+            sum+=nums[j];           
+            mp.put(nums[j],mp.getOrDefault(nums[j],0)+1);
+            
+            if(j-i+1<k){
+                j++;
+            }
+
+            else if(j-i+1==k){
+                if(mp.size()==j-i+1){
+                    ans=Math.max(ans,sum);
+
+
+                   
+
+                    
+                }
+                 sum-=nums[i];
+                    mp.put(nums[i],mp.getOrDefault(nums[i],0)-1);
+
+                    if(mp.get(nums[i])==0) mp.remove(nums[i]);
+                i++;
+                j++;
+            }
+
+
+                
+            
+        }
+
+        return ans;
+        
+    }
+}
