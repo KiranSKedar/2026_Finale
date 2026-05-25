@@ -1,0 +1,61 @@
+class Solution {
+
+    public ArrayList<Long> nextLargerElement(long[] arr, int n) {
+
+        // creating an ArrayList for storing result
+        ArrayList<Long> v = new ArrayList<>();
+
+        // creating a stack for temporarily holding values from array
+        Stack<Long> s = new Stack<>();
+
+        // traversing array from left to right
+        for (int i = 0; i < n; i++) {
+
+            // when stack is empty, there is no greater element
+            if (s.size() == 0) {
+
+                // push -1 into result
+                v.add(-1L);
+            }
+
+            // when stack has elements and top element is greater than current array element
+            else if (s.size() > 0 && s.peek() > arr[i]) {
+
+                // add stack top into result
+                v.add(s.peek());
+            }
+
+            // when stack has elements and stack top is smaller or equal to current element
+            else if (s.size() > 0 && s.peek() <= arr[i]) {
+
+                // remove elements until stack becomes empty
+                // or we find greater element
+                while (s.size() > 0 && s.peek() <= arr[i]) {
+
+                    // remove smaller element
+                    s.pop();
+                }
+
+                // if stack becomes empty
+                if (s.size() == 0) {
+
+                    // no greater element exists
+                    v.add(-1L);
+                }
+
+                // if greater element exists
+                else {
+
+                    // add stack top into result
+                    v.add(s.peek());
+                }
+            }
+
+            // push current array element into stack
+            s.push(arr[i]);
+        }
+
+        // return final result
+        return v;
+    }
+}
