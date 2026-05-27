@@ -16,3 +16,28 @@ peek()	see top element
 poll()	remove top element
 size()	heap size
 isEmpty()	check empty
+
+
+
+
+Heap of Pairs
+
+Very important for:
+
+top k frequent
+k closest points
+merge k sorted lists
+
+Syntax:
+
+PriorityQueue<int[]> pq =
+    new PriorityQueue<>(
+        (a,b) -> a[0] - b[0]
+    );
+
+
+Max Heap of Pairs
+PriorityQueue<int[]> pq =
+    new PriorityQueue<>(
+        (a,b) -> b[0] - a[0]
+    );
