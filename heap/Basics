@@ -1,0 +1,18 @@
+Min Heap (Default)
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+
+
+Max Heap
+PriorityQueue<Integer> pq =
+    new PriorityQueue<>(Collections.reverseOrder());
+
+
+. Important Methods
+Method	Meaning
+add(x)	insert element
+offer(x)	insert element
+peek()	see top element
+poll()	remove top element
+size()	heap size
+isEmpty()	check empty
