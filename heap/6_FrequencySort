@@ -1,0 +1,62 @@
+class Solution {
+    public int[] frequencySort(int[] nums) {
+
+        int n = nums.length;
+
+        // frequency map
+        Map<Integer, Integer> mp = new HashMap<>();
+
+        for(int i = 0; i < n; i++) {
+
+            mp.put(nums[i], mp.getOrDefault(nums[i], 0) + 1);
+        }
+
+        // min heap
+        // pair -> {frequency, value}
+        PriorityQueue<int[]> q =
+            new PriorityQueue<>(
+                (a,b) -> {
+
+                    // if frequency same
+                    if(a[0] == b[0]) {
+
+                        // larger value first
+                        return b[1] - a[1];
+                    }
+
+                    // smaller frequency first
+                    return a[0] - b[0];
+                }
+            );
+
+        // insert frequency and value
+        for(Map.Entry<Integer,Integer> entry : mp.entrySet()) {
+
+            int key = entry.getKey();
+            int val = entry.getValue();
+
+            q.add(new int[]{val, key});
+        }
+
+        int i = 0;
+
+        // build answer
+        while(!q.isEmpty()) {
+
+            int freq = q.peek()[0];
+            int value = q.peek()[1];
+
+            q.poll();
+
+            // insert value freq times
+            while(freq > 0) {
+
+                nums[i++] = value;
+
+                freq--;
+            }
+        }
+
+        return nums;
+    }
+}
