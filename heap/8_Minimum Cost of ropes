@@ -1,0 +1,29 @@
+class Solution {
+    public static int minCost(int[] arr) {
+        
+        int n=arr.length;
+        PriorityQueue<Integer>q=new PriorityQueue<>();
+        
+        int miniCost=0;
+        
+        int a=0,b=0;
+        
+        for(int i=0;i<n;i++){
+            q.offer(arr[i]);
+        }
+        
+        while(q.size()>1){
+             a=q.poll();
+           
+             b=q.poll();
+            int cost=a+b;
+            miniCost+=(a+b);
+            q.offer(cost);
+            
+            
+        }
+        return miniCost;
+        // code here
+        
+    }
+}
