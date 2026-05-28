@@ -1,3 +1,5 @@
+
+//Nearest Greater to left
 class Solution {
 
     public ArrayList<Integer> calculateSpan(int price[], int n) {
