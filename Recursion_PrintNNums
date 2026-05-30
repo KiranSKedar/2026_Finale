@@ -1,0 +1,19 @@
+package com.eazybytes.backend.Recursion;
+
+public class PrintNNums {
+
+    static void recPrintNums(int n){
+        if(n==1)
+        {
+            System.out.print(1+" ");
+            return;
+        }
+        recPrintNums(n-1);
+        System.out.print(n+" ");
+    }
+
+    public static void main(String[] args) {
+        int n=5;
+        recPrintNums(n);
+    }
+}
