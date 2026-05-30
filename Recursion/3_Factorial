@@ -1,0 +1,16 @@
+package com.eazybytes.backend.Recursion;
+
+public class Factorial {
+
+    static int calcFact(int n){
+        if(n==0) return 1;
+
+        return n* calcFact(n-1);
+    }
+
+    public static void main(String[] args) {
+        int n=4; //4*3*2*1
+      int fact=  calcFact(n);
+      System.out.print(fact);
+    }
+}
