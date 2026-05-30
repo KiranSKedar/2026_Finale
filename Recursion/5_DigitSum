@@ -1,0 +1,15 @@
+package com.eazybytes.backend.Recursion;
+
+public class DgitSum {
+
+    static int calcSum(int n){
+        if(n==0) return 0;
+       return n%10+calcSum(n/10);
+    }
+
+    public static void main(String[] args) {
+        int n=12345;
+        int sumOfDigits=calcSum(n);
+        System.out.print(sumOfDigits);
+    }
+}
