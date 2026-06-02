@@ -12,3 +12,9 @@ public class Power {
         System.out.print(ans);
     }
 }
+
+
+*****************************************************
+
+
+10|int| smallPow|=|calcPower|(|a|,|b|/|2|)|;	10|int| smallPow|=|calcPower|(|a|,|b|/|2|)|;	10|int| smallPow|=|calcPower|(|a|,|b|/|2|)|;	10|int| smallPow|=|calcPower|(|a|,|b|/|2|)|;
