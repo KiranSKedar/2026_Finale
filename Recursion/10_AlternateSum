@@ -1,0 +1,17 @@
+package com.eazybytes.backend.Recursion;
+
+public class AlternateSUmSeries {
+
+    static int findSum(int n){
+        if(n==0) return 0;
+
+        if(n%2==0)
+          return  findSum(n-1)-n;
+        else return findSum(n-1)+n;
+    }
+    public static void main(String[] args) {
+        int n=10;//1 -2 3 -4 5 -6 7 -8 9 -10
+        int ans=findSum(n);
+        System.out.print(ans);
+    }
+}
