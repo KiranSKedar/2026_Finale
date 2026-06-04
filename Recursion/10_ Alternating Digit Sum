@@ -1,0 +1,24 @@
+https://leetcode.com/problems/alternating-digit-sum/description/
+
+
+class Solution {
+
+    int countDigits(int n){
+        if(n == 0) return 0;
+        return 1 + countDigits(n / 10);
+    }
+
+    int findSum(int n, int len){
+        if(n == 0) return 0;
+
+        if(len % 2 == 1)
+            return findSum(n / 10, len - 1) + n % 10;
+        else
+            return findSum(n / 10, len - 1) - n % 10;
+    }
+
+    public int alternateDigitSum(int n) {
+        int len = countDigits(n);
+        return findSum(n, len);
+    }
+}
