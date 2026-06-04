@@ -1,0 +1,17 @@
+package com.eazybytes.backend.Recursion;
+
+public class SumOfNNums {
+
+    static int sumOfn(int n){
+        if(n==0) return 0;
+
+        return n+sumOfn(n-1);
+    }
+    public static void main(String[] args) {
+        int n=10;
+
+        int ans=sumOfn(n);
+
+        System.out.print(ans);
+    }
+}
