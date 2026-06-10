@@ -1,0 +1,21 @@
+package com.eazybytes.backend.Recursion;
+
+public class ReverseString {
+
+    static String reverseString(String s,int i){
+        if(i==s.length()){
+            return "";
+        }
+        String smallAns=reverseString(s,i+1);
+
+        return smallAns+s.charAt(i);
+    }
+    public static void main(String[] args) {
+        String str="dad";
+        String ans=reverseString(str,0);
+        System.out.println(ans);
+
+        if(str.equals(ans)) System.out.println("Palindrome");
+        else System.out.println("No Palindrome");
+    }
+}
