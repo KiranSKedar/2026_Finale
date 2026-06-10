@@ -1,0 +1,44 @@
+package com.eazybytes.backend.Recursion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class PrintAllIndices {
+
+    static ArrayList<Integer> returnIndices(int a[],int target,int n,int i){
+        if(i==n) return new ArrayList<>();
+
+        ArrayList<Integer> arr=new ArrayList<>();
+        if(a[i]==target){
+            arr.add((a[i]));
+
+
+        }
+
+        ArrayList<Integer> smallAns=returnIndices(a,target,n,i+1);
+        arr.addAll(smallAns);
+        return arr;
+
+    }
+
+    static void printIndices(int a[],int target,int n,int i){
+        if(i==n) return;
+        if(a[i]==target)
+            System.out.print(a[i]+ " ");
+        printIndices(a,target,n,i+1);
+    }
+
+    public static void main(String[] args) {
+        int a[]={1,2,3,2,4,2,2,3,4,5,6,6,7,6,2};
+
+        int n=a.length;
+        printIndices(a,6,n,0);
+        System.out.println();
+        ArrayList<Integer> aw=returnIndices(a,2,n,0);
+
+        for(Integer i:aw){
+            System.out.print(i+" ");
+        }
+
+    }
+}
