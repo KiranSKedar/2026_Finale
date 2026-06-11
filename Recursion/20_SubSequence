@@ -1,0 +1,46 @@
+package com.eazybytes.backend.Recursion;
+
+import java.util.ArrayList;
+
+public class SubSequenceRec {
+
+    static ArrayList<String> getAllSSQ(String s,int i){
+        ArrayList<String> a=new ArrayList<>();
+
+        if(i==s.length()){
+            a.add("");
+            return a;
+        }
+
+        char c=s.charAt(i);
+
+        ArrayList<String>smallAns=getAllSSQ(s,i+1);
+        for(String str:smallAns){
+           a.add(str);
+           a.add(c+str);
+
+        }
+
+        return a;
+    }
+
+    static void printSSQ(String s,String currAns){
+        if(s.length()==0){
+            System.out.println(currAns);
+            return;
+        }
+        char ch=s.charAt(0);
+        String rem=s.substring(1);
+        printSSQ(rem,ch+currAns);
+        printSSQ(rem,currAns);
+    }
+    public static void main(String[] args) {
+        String s="abc";
+
+        ArrayList<String> ans=getAllSSQ(s,0);
+
+//        System.out.println(ans);
+
+        printSSQ("abc","");
+    }
+}
