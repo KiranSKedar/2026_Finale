@@ -1,0 +1,33 @@
+o(n2)
+Not stable sort
+
+package com.eazybytes.backend.Sorting;
+
+public class SelectionSort {
+
+    static void selection(int[] arr){
+        int n=arr.length;
+        for(int i=0;i<n-1;i++){
+
+            int mini_Index=i;
+            for(int j=i+1;j<n;j++){
+                if(arr[j]<arr[mini_Index]){
+                    mini_Index=j;
+                }
+            }
+
+            int temp=arr[i];
+            arr[i]=arr[mini_Index];
+            arr[mini_Index]=temp;
+        }
+    }
+    public static void main(String[] args) {
+        int[] arr={7,4,5,1,2};
+        selection(arr);
+        System.out.println("Array after sorting:-");
+
+        for(int i=0;i< arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
