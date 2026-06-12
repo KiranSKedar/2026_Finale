@@ -1,0 +1,28 @@
+package com.eazybytes.backend.Recursion;
+
+public class FrogJump {
+
+    static int calAns(int a[],int i,int n){
+        if(i==n-1) return 0;
+        int takefirst=Math.abs(a[i]-a[i+1])+calAns(a,i+1,n);
+
+        if(i==n-2) return takefirst;
+
+        int takedirectsecond=Math.abs(a[i]-a[i+2])+calAns(a,i+2,n);
+
+        return Math.min(takedirectsecond,takefirst);
+
+
+    }
+    public static void main(String[] args) {
+        int a[]={10,30,40,20};
+
+        int ans=calAns(a,0,a.length);
+
+        System.out.print(ans);
+    }
+
+
+
+
+}
