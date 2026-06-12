@@ -1,0 +1,24 @@
+package com.eazybytes.backend.Recursion;
+
+public class PhoneCombinations {
+
+    static void combinations(String dig, String[] kp,String res){
+        if(dig.length()==0){
+            System.out.print(res+" ");
+            return;
+        }
+
+        int currNum=dig.charAt(0)-'0';
+        String currChoices=kp[currNum];
+
+        for(int i=0;i<currChoices.length();i++){
+            combinations(dig.substring(1),kp,res+currChoices.charAt(i));
+        }
+    }
+    public static void main(String[] args) {
+        String s="23";
+        String[] kp={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+
+        combinations(s,kp,"");
+    }
+}
