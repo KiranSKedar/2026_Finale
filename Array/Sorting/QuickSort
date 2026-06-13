@@ -1,0 +1,71 @@
+
+//not stable sort
+
+Quick Sort Time Complexity
+Case	Time Complexity
+Best Case	O(n log n)
+Average Case	O(n log n)
+Worst Case	O(n²) -->mostly avoided using randomsied quick sort
+
+Space Complexity
+Case	Space Complexity
+Best/Average Case	O(log n)
+Worst Case	O(n)
+
+
+
+package com.eazybytes.backend.Sorting;
+
+public class QuickSort {
+
+    static void swap(int a[],int i,int j){
+        int temp=a[i];
+        a[i]=a[j];
+        a[j]=temp;
+    }
+
+    static int partition(int a[],int start,int end){
+        int pivot=a[start];
+
+        int cnt=0;
+        for(int i=start+1;i<=end;i++){
+            if(a[i]<pivot){
+                cnt++;
+            }
+        }
+        pivot=start+cnt;
+
+        swap(a,start,pivot);
+        int i=start,j=end;
+        while(i<pivot && j>pivot){
+
+            while(a[i]<=pivot)i++;
+            while(a[j]>pivot)j--;
+            if(i<pivot && j>pivot){
+                swap(a,i,j);
+                i++;
+                j--;
+            }
+
+
+        }
+        return pivot;
+    }
+    static void quick(int[] arr,int start,int end){
+        if(start>=end) return;
+        int pi=partition(arr,start,end);
+        quick(arr,start,pi-1);
+        quick(arr,pi+1,end);
+
+    }
+    public static void main(String[] args) {
+        int[] arr={6,3,1,5,4};
+
+
+        int n=arr.length;
+        quick(arr,0,n-1);
+        for(int i=0;i<n;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
