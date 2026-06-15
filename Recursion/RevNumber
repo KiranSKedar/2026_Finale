@@ -1,0 +1,17 @@
+package com.eazybytes.backend.Recursion;
+
+public class ReverseNumber {
+
+
+    static void revNum(int a,int rev){
+        if(a==0){
+            System.out.print(rev);
+            return;
+        }
+        revNum(a/10,rev*10+a%10);
+    }
+    public static void main(String[] args) {
+        int a=1234;
+        revNum(a,0);
+    }
+}
