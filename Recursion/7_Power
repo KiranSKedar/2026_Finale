@@ -18,3 +18,29 @@ public class Power {
 
 
 10|int| smallPow|=|calcPower|(|a|,|b|/|2|)|;	10|int| smallPow|=|calcPower|(|a|,|b|/|2|)|;	10|int| smallPow|=|calcPower|(|a|,|b|/|2|)|;	10|int| smallPow|=|calcPower|(|a|,|b|/|2|)|;
+
+https://leetcode.com/problems/powx-n/
+
+class Solution {
+
+
+    public double recPow(double x,int n){
+        if(n==0) return 1;
+        double call=recPow(x,n/2);
+
+        if(n%2==0) return call*call;
+        else return x*call*call;
+    }
+    public double myPow(double x, int n) {
+         if(n<0) return 1/recPow(x,-n);
+       return recPow(x,n);
+       
+
+        
+        
+
+        
+
+        
+    }
+}
