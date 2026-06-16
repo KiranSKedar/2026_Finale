@@ -2,11 +2,24 @@ https://leetcode.com/problems/unique-paths/description/
 
 
 class Solution {
+
+    int path(int cr,int cc,int m,int n){
+
+        if(cr==m-1 || cc==n-1) return 1;
+        if(cr>=m || cc>=n) return 0;
+    int right=path(cr,cc+1,m,n);
+    int left=path(cr+1,cc,m,n);
+
+    return right+left;
+    }
     public int uniquePaths(int m, int n) {
 
-        if(m==1 || n==1) return 1;
 
-        return uniquePaths(m-1,n)+uniquePaths(m,n-1);
+        return path(0,0,m,n);
+
+        // if(m==1 || n==1) return 1;
+
+        // return uniquePaths(m-1,n)+uniquePaths(m,n-1);
         
     }
 }
