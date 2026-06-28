@@ -1,0 +1,16 @@
+https://www.geeksforgeeks.org/problems/dearrangement-of-balls0918/1
+
+
+class Solution {
+    public int derangeCount(int n) {
+        // code here
+        
+        if(n==1) return 0;
+        if(n==2) return 1;
+        
+        return (n-1)*(derangeCount(n-1)+derangeCount(n-2));
+    }
+};
+
+
+https://leetcode.com/discuss/post/1367659/count-derangements-permutation-such-that-ys7b/
