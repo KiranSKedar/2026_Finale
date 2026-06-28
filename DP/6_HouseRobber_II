@@ -1,0 +1,28 @@
+https://leetcode.com/problems/house-robber-ii/
+
+class Solution {
+    int calAmount(int[] nums,int idx,int n,int[] dp){
+        if(idx>n) return 0;
+
+        if(dp[idx]!=-1) return dp[idx]; 
+
+        int take=nums[idx]+calAmount(nums,idx+2,n,dp);
+        int skip=calAmount(nums,idx+1,n,dp);
+
+        return dp[idx]=Math.max(take,skip);
+    }
+    public int rob(int[] nums) {
+        int n=nums.length;
+    if(n==1) return nums[0];
+    if(n==2) return Math.max(nums[0],nums[1]);
+        int dp[]=new int[n];
+        Arrays.fill(dp,-1);
+
+        int ans1=calAmount(nums,0,n-2,dp);
+        Arrays.fill(dp,-1);
+        int ans2=calAmount(nums,1,n-1,dp);
+
+        return Math.max(ans1 ,ans2);
+        
+    }
+}
