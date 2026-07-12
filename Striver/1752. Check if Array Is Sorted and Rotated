@@ -1,0 +1,67 @@
+https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/
+
+class Solution {
+    public boolean check(int[] nums) {
+
+        int n=nums.length;
+        int[] temp=new int[n];
+
+        for(int offset=0;offset<n;offset++){
+
+            int idx=0;
+            for(int i=offset;i<n;i++){
+                temp[idx]=nums[i];
+                idx++;
+            }
+            for(int k=0;k<offset;k++){
+                temp[idx++]=nums[k];
+            }
+            boolean flag=true;
+            for(int j=1;j<n;j++){
+                if(temp[j-1]>temp[j]) {
+                     flag=false;
+                     break;
+                }
+               
+            }
+            if(flag==true) return true;
+        }
+
+
+    return false;
+
+        
+    }
+}
+
+
+TC - o(n*n)
+
+***************************************************************************
+
+
+class Solution {
+    public boolean check(int[] nums) {
+
+        int n=nums.length;
+        int[] temp=nums.clone();
+        Arrays.sort(temp);
+
+        for(int offset=0;offset<n;offset++){
+            boolean flag=true;
+            for(int i=0;i<n;i++){
+                if(nums[(offset+i)%n]!=temp[i]){
+                    flag=false;
+                    break;
+                }
+            }
+            if(flag==true) return true;
+        }
+
+      return false;
+        
+    }
+}
+
+
+TC o(n)
